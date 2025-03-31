@@ -1,4 +1,4 @@
-export default ({ env }) => ({
+export default ({ env }: { env: { (key: string, defaultValue?: any): any; bool: (key: string, defaultValue?: boolean) => boolean } }) => ({
   auth: {
     secret: env('ADMIN_JWT_SECRET'),
   },
@@ -11,7 +11,7 @@ export default ({ env }) => ({
     },
   },
   flags: {
-    nps: env.bool('FLAG_NPS', true),
-    promoteEE: env.bool('FLAG_PROMOTE_EE', true),
+    nps: env.bool('FLAG_NPS', true), // ✅ Now correctly typed
+    promoteEE: env.bool('FLAG_PROMOTE_EE', true), // ✅ Now correctly typed
   },
 });

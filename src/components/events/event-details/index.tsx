@@ -4,6 +4,7 @@ import HeaderOne from "@/layout/headers/HeaderOne"
 import Brand from "@/components/common/Brand"
 import EventDetailsArea from "./EventDetailsArea"
 
+
 const EventDetails = () => {
    return (
       <>
@@ -11,7 +12,7 @@ const EventDetails = () => {
          <main>
             <Breadcrumb page_title="Our Events Slider" page_list="Event" />
             
-            <EventDetailsArea />
+            <EventDetailsArea single_event={null} />
             <Brand style={true} />
          </main>
          <FooterOne />
