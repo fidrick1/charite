@@ -105,15 +105,18 @@ const getEventDescription = (desc: { children: { text: string }[] }[] | undefine
                  alt={item.thumb && (item.thumb as any).alternativeText  || "Event"} width={500} height={300} objectFit="cover" />
                 </div>
                 <div className="content">
-                  <h4><Link href={`/event-details/${item.id}`}>{item.title}</Link></h4>
+                  <h4><Link   href={`/event-details/${item.documentId}`}  onClick={() => {    localStorage.setItem('eventDocumentId', item.documentId); // Store the documentId in localStorage
+                       }} >{item.title}</Link></h4>
                   <ul className="blog-meta">
                   <li>
                      <i className="flaticon-time"></i> 
-                                                    <Link href="#">
+                                                    <Link  href={`/event-details/${item.documentId}`}  onClick={() => {    localStorage.setItem('eventDocumentId', item.documentId); // Store the documentId in localStorage
+                       }}  >
                                                           {item.time ? format(new Date(item.time), "MMMM d, yyyy h:mm a") : "TBA"}
                                                                                                                            </Link>
                                                                                                                            </li>
-                    <li><i className="flaticon-map"></i> <Link href="#">{item.city}</Link></li>
+                    <li><i className="flaticon-map"></i> <Link  href={`/event-details/${item.documentId}`}  onClick={() => {    localStorage.setItem('eventDocumentId', item.documentId); // Store the documentId in localStorage
+                       }} >{item.city}</Link></li>
                   </ul>
                   {/* Render description */}
                   <div>{getEventDescription(item.desc)}</div>
