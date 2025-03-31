@@ -21,6 +21,7 @@ interface EventThumb {
    desc?: { children: { text: string }[] }[]; // Optional field
  }
  
+ const API_URL = process.env.NEXT_PUBLIC_STRAPI_API_URL;
 
 const EventArea = () => {
   const [events, setEvents] = useState<EventData[]>([]); // State to store fetched events data
@@ -35,7 +36,7 @@ const EventArea = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch("http://localhost:1337/api/events?populate=*");
+        const response = await fetch(`${API_URL}/api/events?populate=*`);
         const data = await response.json();
         setEvents(data.data); // Assuming the events are in the `data` field of the response
         setLoading(false);
@@ -101,7 +102,7 @@ const getEventDescription = (desc: { children: { text: string }[] }[] | undefine
             <div key={item.id} className="col-xl-4 col-md-6">
               <div className={`event-item-three ${item.item_bg}`}>
                 <div className="image">
-                <Image src={item.thumb ? `http://localhost:1337${item.thumb.url}` : "/default-thumbnail.jpg"}
+                <Image src={item.thumb ? `${API_URL}${item.thumb.url}` : "/default-thumbnail.jpg"}
                  alt={item.thumb && (item.thumb as any).alternativeText  || "Event"} width={500} height={300} objectFit="cover" />
                 </div>
                 <div className="content">
