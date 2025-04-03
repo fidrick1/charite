@@ -6,9 +6,14 @@ import { format } from "date-fns";
 
 // Define the types of the event data
 interface EventThumb {
-   url: string;
-   alternativeText?: string;
- }
+  url: string;
+  alternativeText?: string;
+  formats?: {
+    small?: { url: string };
+    medium?: { url: string };
+    thumbnail?: { url: string };
+  };
+}
  
  interface EventData {
    id: number;
