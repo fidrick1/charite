@@ -10,6 +10,9 @@ const nextConfig = {
         },
       ],
     },
+    images: {
+      domains: ['strapibackend-gyvh.onrender.com'],
+    },
   };
   
   module.exports = nextConfig;
