@@ -107,8 +107,17 @@ const getEventDescription = (desc: { children: { text: string }[] }[] | undefine
             <div key={item.id} className="col-xl-4 col-md-6">
               <div className={`event-item-three ${item.item_bg}`}>
                 <div className="image">
-                <Image src={item.thumb ? `${API_URL}${item.thumb.url}` : "/default-thumbnail.jpg"}
-                 alt={item.thumb && (item.thumb as any).alternativeText  || "Event"} width={500} height={300} objectFit="cover" />
+                <Image 
+  src={
+    item.thumb
+      ? `${API_URL}${item.thumb.formats?.medium?.url || item.thumb.formats?.small?.url || item.thumb.url}`
+      : "/default-thumbnail.jpg"
+  }
+  alt={item.thumb?.alternativeText || "Event Image"}
+  width={500} 
+  height={300} 
+  objectFit="cover" 
+/>
                 </div>
                 <div className="content">
                   <h4><Link   href={`/event-details/${item.documentId}`}  onClick={() => {    localStorage.setItem('eventDocumentId', item.documentId); // Store the documentId in localStorage
