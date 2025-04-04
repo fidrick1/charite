@@ -99,21 +99,6 @@ const getEventDescription = (desc: { children: { text: string }[] }[] | undefine
     return <div>Loading...</div>; // You can customize this loading state
   }
 
-
-  const getImageUrl = (thumb: EventThumb | null | undefined) => {
-    if (!thumb) return "/default-thumbnail.jpg";
-  
-    const url =
-      thumb.formats?.medium?.url ||
-      thumb.formats?.small?.url ||
-      thumb.url;
-  
-    return url?.startsWith("http") ? url : `${API_URL}${url}`;
-  };  
-
-
-
-
   return (
     <div className="our-events-page py-120 rel z-1">
       <div className="container">
@@ -123,11 +108,15 @@ const getEventDescription = (desc: { children: { text: string }[] }[] | undefine
               <div className={`event-item-three ${item.item_bg}`}>
                 <div className="image">
                 <Image 
-  src={getImageUrl(item.thumb)}
+  src={
+    item.thumb
+      ? `${API_URL}${item.thumb.formats?.medium?.url || item.thumb.formats?.small?.url || item.thumb.url}`
+      : "/default-thumbnail.jpg"
+  }
   alt={item.thumb?.alternativeText || "Event Image"}
   width={500} 
   height={300} 
-  style={{ objectFit: "cover" }}
+  objectFit="cover" 
 />
                 </div>
                 <div className="content">
