@@ -110,7 +110,7 @@ const getEventDescription = (desc: { children: { text: string }[] }[] | undefine
                 <Image 
   src={
     item.thumb
-      ? `${API_URL}${item.thumb.formats?.medium?.url || item.thumb.formats?.small?.url || item.thumb.url}`
+      ? item.thumb.formats?.medium?.url || item.thumb.formats?.small?.url || item.thumb.url
       : "/default-thumbnail.jpg"
   }
   alt={item.thumb?.alternativeText || "Event Image"}
