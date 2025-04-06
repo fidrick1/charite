@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { format } from "date-fns";
+import defaultThumbnail from "@/assets/img/default/eventd.jpg";
 
 // Define the types of the event data
 interface EventThumb {
@@ -111,7 +112,7 @@ const getEventDescription = (desc: { children: { text: string }[] }[] | undefine
   src={
     item.thumb
       ? `${API_URL}${item.thumb.formats?.medium?.url || item.thumb.formats?.small?.url || item.thumb.url}`
-      : "@/assets/img/default/default-thumbnail.jpg"
+      : defaultThumbnail  
   }
   alt={item.thumb?.alternativeText || "Event Image"}
   width={500} 
