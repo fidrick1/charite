@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
 
-import ppcomingEventImg_1 from "@/assets/img/widgets/event1.jpg";
-import ppcomingEventImg_2 from "@/assets/img/widgets/event2.jpg";
+import ppcomingEventImg_1 from "@/assets/img/default/right-arrow.png";
+import ppcomingEventImg_2 from "@/assets/img/default/right-arrow.png";
 
 // Type for the main event data
 interface EventData {
